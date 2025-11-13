@@ -10,6 +10,16 @@ Antes de rodar pela primeira vez, instale os módulos:
 
 ```
 
+Criar `.env`  e adicionar:
+
+```bash
+GMAIL_USER='seu-email@gmail.com'
+GMAIL_APP_PASSWORD='sua-senha-de-app-gmail'
+```
+
+Para criar a senha de aplicativo, ative a autenticação de dois fatores e depois acesse https://myaccount.google.com/apppasswords.
+
+
 Para rodar:
 
 ```bash
