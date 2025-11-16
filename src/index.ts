@@ -1,6 +1,11 @@
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
 import dotenv from "dotenv";
 dotenv.config();
+
+const emailTemplatePath = path.join(__dirname, 'emailTemplate.html')
+const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf8')
 
 async function sendEmail() {
     try {
@@ -15,11 +20,11 @@ async function sendEmail() {
 
         // Email details
         const mailOptions = {
-            from: `"My App" <${process.env.GMAIL_USER}>`,
-            to: 'gustavo.rosa5@fatec.sp.gov.br',
+            from: `"Kingfisher" <${process.env.GMAIL_USER}>`,
+            to: `${process.env.EMAIL_RECEIVER}`,
             subject: 'Test Email from Nodemailer',
             text: 'Hello! This is a plain text email.',
-            html: '<h1>Hello!</h1><p>This is an HTML email.</p>'
+            html: emailTemplate
         };
 
         // Send email
@@ -30,5 +35,4 @@ async function sendEmail() {
     }
 }
 
-// Run the function
-sendEmail();
+sendEmail()
